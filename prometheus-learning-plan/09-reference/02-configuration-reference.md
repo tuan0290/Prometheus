@@ -245,16 +245,28 @@ time_intervals:
 ### Prometheus
 
 ```bash
+# Prometheus 3.x - các flags --storage.tsdb.retention.* đã deprecated
+# Nên cấu hình retention trong prometheus.yml thay vì CLI flags
 prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
   --storage.tsdb.path=/var/lib/prometheus \
-  --storage.tsdb.retention.time=15d \
-  --storage.tsdb.retention.size=10GB \
   --web.listen-address=0.0.0.0:9090 \
   --web.enable-lifecycle \
   --web.enable-admin-api \
   --log.level=info
 ```
+
+> **Lưu ý Prometheus 3.x**: `--storage.tsdb.retention.time` và `--storage.tsdb.retention.size` đã bị deprecated. Cấu hình retention trong `prometheus.yml`:
+> ```yaml
+> global:
+>   # Retention mặc định: 15 ngày
+>   # Cấu hình qua config file thay vì CLI flags
+> storage:
+>   tsdb:
+>     retention:
+>       time: 15d
+>       size: 10GB
+> ```
 
 ### Alertmanager
 

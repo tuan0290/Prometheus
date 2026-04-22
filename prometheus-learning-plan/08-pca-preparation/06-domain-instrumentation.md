@@ -167,7 +167,7 @@ Collect system metrics từ Linux/Unix:
 
 ```bash
 # Install
-wget https://github.com/prometheus/node_exporter/releases/download/v1.8.0/node_exporter-1.8.0.linux-amd64.tar.gz
+wget https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
 
 # Run
 ./node_exporter --web.listen-address=":9100"

@@ -23,8 +23,9 @@ sudo useradd --no-create-home --shell /bin/false prometheus
 sudo mkdir -p /etc/prometheus /var/lib/prometheus
 
 # Download Prometheus (check latest version tại https://prometheus.io/download/)
+# Prometheus 3.5.2 là bản LTS (Long Term Support)
 cd /tmp
-PROM_VERSION="2.51.2"
+PROM_VERSION="3.5.2"
 wget https://github.com/prometheus/prometheus/releases/download/v${PROM_VERSION}/prometheus-${PROM_VERSION}.linux-amd64.tar.gz
 
 # Extract
@@ -37,9 +38,6 @@ cd prometheus-${PROM_VERSION}.linux-amd64
 ```bash
 # Copy binaries
 sudo cp prometheus promtool /usr/local/bin/
-
-# Copy console files
-sudo cp -r consoles console_libraries /etc/prometheus/
 
 # Set ownership
 sudo chown -R prometheus:prometheus /etc/prometheus /var/lib/prometheus
@@ -100,8 +98,6 @@ Type=simple
 ExecStart=/usr/local/bin/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
   --storage.tsdb.path=/var/lib/prometheus \
-  --web.console.templates=/etc/prometheus/consoles \
-  --web.console.libraries=/etc/prometheus/console_libraries \
   --web.enable-lifecycle
 
 Restart=on-failure
@@ -109,6 +105,8 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+> **Lưu ý Prometheus 3.x**: Các flags `--web.console.templates` và `--web.console.libraries` đã bị xóa hoàn toàn. Flags `--storage.tsdb.retention.time` và `--storage.tsdb.retention.size` đã deprecated — nên cấu hình retention trong `prometheus.yml` thay thế.
 
 ### Bước 5: Start Prometheus
 
@@ -140,7 +138,7 @@ Bạn sẽ thấy Prometheus web interface.
 
 ```bash
 cd /tmp
-NE_VERSION="1.8.0"
+NE_VERSION="1.9.1"
 wget https://github.com/prometheus/node_exporter/releases/download/v${NE_VERSION}/node_exporter-${NE_VERSION}.linux-amd64.tar.gz
 
 # Extract

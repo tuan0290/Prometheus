@@ -216,7 +216,17 @@ wal/
 
 **Scenario**: Monitor production với 15 days retention
 
+> **Prometheus 3.x**: `--storage.tsdb.retention.time` và `--storage.tsdb.retention.size` đã deprecated dưới dạng CLI flags. Nên cấu hình trong `prometheus.yml`:
+> ```yaml
+> storage:
+>   tsdb:
+>     retention:
+>       time: 15d
+>       size: 50GB
+> ```
+
 ```bash
+# Vẫn hoạt động nhưng deprecated - dùng config file thay thế
 prometheus \
   --storage.tsdb.path=/var/lib/prometheus/data \
   --storage.tsdb.retention.time=15d \

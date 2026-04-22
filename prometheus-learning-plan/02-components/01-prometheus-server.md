@@ -201,11 +201,17 @@ scrape_configs:
 Cấu hình retention và storage:
 
 ```yaml
-# Command-line flags
+# Prometheus 3.x: cấu hình retention trong prometheus.yml (CLI flags đã deprecated)
+storage:
+  tsdb:
+    retention:
+      time: 15d
+      size: 50GB
+
+# CLI flags (deprecated nhưng vẫn hoạt động)
 --storage.tsdb.path=/var/lib/prometheus/data
 --storage.tsdb.retention.time=15d
 --storage.tsdb.retention.size=50GB
---storage.tsdb.wal-compression
 ```
 
 ### Cấu Hình Relabeling

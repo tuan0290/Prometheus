@@ -250,7 +250,15 @@ groups:
 ### Storage Optimization
 
 ```bash
-# Tune TSDB
+# Prometheus 3.x: dùng config file thay vì CLI flags (deprecated)
+# Trong prometheus.yml:
+# storage:
+#   tsdb:
+#     retention:
+#       time: 15d
+#       size: 50GB
+
+# CLI (deprecated nhưng vẫn hoạt động)
 prometheus \
   --storage.tsdb.retention.time=15d \
   --storage.tsdb.retention.size=50GB \

@@ -162,7 +162,7 @@ volumes:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.48.0
+    image: prom/prometheus:v3.5.2
     container_name: prometheus
     restart: unless-stopped
     volumes:
@@ -197,7 +197,7 @@ services:
       - prometheus
 
   node-exporter:
-    image: prom/node-exporter:v1.7.0
+    image: prom/node-exporter:v1.9.1
     container_name: node-exporter
     restart: unless-stopped
     volumes:
@@ -303,7 +303,7 @@ volumes:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.48.0
+    image: prom/prometheus:v3.5.2
     container_name: prometheus
     restart: unless-stopped
     volumes:
@@ -362,7 +362,7 @@ services:
       - prometheus
 
   node-exporter:
-    image: prom/node-exporter:v1.7.0
+    image: prom/node-exporter:v1.9.1
     container_name: node-exporter
     restart: unless-stopped
     volumes:
@@ -510,7 +510,7 @@ volumes:
 services:
   # Prometheus instance 1
   prometheus1:
-    image: prom/prometheus:v2.48.0
+    image: prom/prometheus:v3.5.2
     container_name: prometheus1
     restart: unless-stopped
     volumes:
@@ -548,7 +548,7 @@ services:
 
   # Prometheus instance 2 (HA pair)
   prometheus2:
-    image: prom/prometheus:v2.48.0
+    image: prom/prometheus:v3.5.2
     container_name: prometheus2
     restart: unless-stopped
     volumes:

@@ -403,7 +403,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: node-exporter
-          image: prom/node-exporter:v1.7.0
+          image: prom/node-exporter:v1.9.1
           args:
             - --path.procfs=/host/proc
             - --path.sysfs=/host/sys
