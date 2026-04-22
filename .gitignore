@@ -1,0 +1,21 @@
+# Terraform
+prometheus-learning-plan/07-labs/terraform/.terraform/
+prometheus-learning-plan/07-labs/terraform/.terraform.lock.hcl
+prometheus-learning-plan/07-labs/terraform/terraform.tfstate
+prometheus-learning-plan/07-labs/terraform/terraform.tfstate.backup
+prometheus-learning-plan/07-labs/terraform/terraform.tfvars
+prometheus-learning-plan/07-labs/terraform/*.tfplan
+prometheus-learning-plan/07-labs/terraform/crash.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Kiro
+.kiro/
